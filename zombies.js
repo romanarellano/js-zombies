@@ -251,7 +251,7 @@ Player.prototype.discardItem = function(item){
 Player.prototype.equip =  function(itemToEquip){
 
  
-    if (this.getPack().indexOf(itemToEquip) >=0 && itemToEquip instanceof Weapon && this.equipped == false){
+    if (this.getPack().indexOf(itemToEquip) >=0 && itemToEquip instanceof Weapon && this.equipped === false){
 
 
       this.discardItem(itemToEquip);
@@ -277,13 +277,6 @@ Player.prototype.equip =  function(itemToEquip){
     }
 
 
-    
-    
-    
-  
-
-   
-
 };
 
 /**
@@ -304,8 +297,29 @@ Player.prototype.equip =  function(itemToEquip){
  * @name eat
  * @param {Food} itemToEat  The food item to eat.
  */
+Player.prototype.eat = function(itemToEat){
+  if(itemToEat instanceof Food && this.getPack().indexOf(itemToEat)>=0 ){
+
+     if((this.health +itemToEat.energy) > this.getMaxHealth()){
+
+        this.health = this.getMaxHealth();
+
+      
+     }
+
+     else{
+
+        this.health += itemToEat.energy;
 
 
+     }
+        this.discardItem(itemToEat);
+  }
+  else {
+
+    return false;
+  }
+};
 /**
  * Player Class Method => useItem(item)
  * -----------------------------
@@ -318,7 +332,7 @@ Player.prototype.equip =  function(itemToEquip){
  * @name useItem
  * @param {Item/Weapon/Food} item   The item to use.
  */
-
+  //Player.prototype.useItem = functio
 
 /**
  * Player Class Method => equippedWith()
