@@ -1117,6 +1117,55 @@ StrongZombie.prototype.crush = function(player){
   }
 
 };
+
+RangedZombie.prototype.spit = function(player){
+
+     var base_damage = calculateAttackDamage(this);
+
+  if(player.health < (player.getMaxHealth()/2)){
+
+    player.takeDamage(base_damage+ Math.floor(0.70 * base_damage));
+    console.log(this.name, "spits with extra damage " + player.name);
+    return base_damage+ Math.floor(0.70 * base_damage);
+  }
+
+  else {
+
+    player.takeDamage(base_damage);
+    console.log(this.name + " spits " + player.name);
+    return base_damage;
+  }
+
+
+
+};
+
+
+ExplodingZombie.prototype.explode = function(player){
+
+     var base_damage = calculateAttackDamage(this);
+
+  if(player.health < (player.getMaxHealth()/2) && (this.speed > player.speed)){
+
+    player.takeDamage(base_damage+ (2 * base_damage));
+    console.log(player.name, "explodes with extra damage by " , this.name);
+     this.isAlive = false;
+    this.health=0;
+    return base_damage+ (2* base_damage);
+  }
+
+  else {
+
+    player.takeDamage(base_damage);
+    console.log(player.name, " explodes because" + this.name , "is too powerful.");
+    this.isAlive = false;
+    this.health=0;
+    return base_damage;
+  }
+
+
+
+};
 /**
  * Sample run.
  * Feel free to edit this and check your game logic.
