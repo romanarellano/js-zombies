@@ -621,7 +621,7 @@ Player.prototype.takeItem = function(item){
 
   if(this.getPack().length < 3){
 
-    console.log(this.name, item , "is a success!");
+    console.log(this.name, " is a success!");
     this.getPack().push(item);
     return true;
     
@@ -662,7 +662,7 @@ Player.prototype.discardItem = function(item){
   if(this.getPack().indexOf(item) !== -1){
 
       this.getPack().splice(this.getPack().indexOf(item),1);
-      console.log("Player discards" +item.name);
+      console.log("Player discards " +item.name);
       return true;
   }
   else {
@@ -1087,12 +1087,12 @@ FastZombie.prototype.charge= function(player){
   if(this.speed > player.speed){
 
       player.takeDamage(base_damage + Math.floor(base_damage/2));
-      console.log(this.name + "charges and gives more damage", player.name);
+      console.log( "FastZombie charges and gives more damage to ", player.name);
       return base_damage + Math.floor(base_damage/2);
   }
   else {
       player.takeDamage(base_damage);
-      console.log(this.name + "charges" , player.name);
+      console.log("FastZombie charges against" , player.name);
       return base_damage;
   }
 
@@ -1105,14 +1105,14 @@ StrongZombie.prototype.crush = function(player){
   if(this.strength > player.strength){
 
     player.takeDamage(base_damage+ Math.floor(0.80 * base_damage));
-    console.log("Powerful Strong zombie crushes with extra damage " + player.name);
+    console.log("Powerful Strong zombie crushes with extra damage to " + player.name);
     return base_damage+ Math.floor(0.80 * base_damage);
   }
 
   else {
 
     player.takeDamage(base_damage);
-    console.log(this.name + " crushes " + player.name);
+    console.log("StrongZombie crushes " + player.name);
     return base_damage;
   }
 
@@ -1125,14 +1125,14 @@ RangedZombie.prototype.spit = function(player){
   if(player.health < (player.getMaxHealth()/2)){
 
     player.takeDamage(base_damage+ Math.floor(0.70 * base_damage));
-    console.log(this.name, "spits with extra damage " + player.name);
+    console.log("RangedZombie spits with extra damage against " + player.name);
     return base_damage+ Math.floor(0.70 * base_damage);
   }
 
   else {
 
     player.takeDamage(base_damage);
-    console.log(this.name + " spits " + player.name);
+    console.log("RangedZombie spits at " + player.name);
     return base_damage;
   }
 
@@ -1148,7 +1148,7 @@ ExplodingZombie.prototype.explode = function(player){
   if(player.health < (player.getMaxHealth()/2) && (this.speed > player.speed)){
 
     player.takeDamage(base_damage+ (2 * base_damage));
-    console.log(player.name, "explodes with extra damage by " , this.name);
+    console.log("ZombieExploder explodes with extra damage to " , player.name);
      this.isAlive = false;
     this.health=0;
     return base_damage+ (2* base_damage);
@@ -1157,7 +1157,7 @@ ExplodingZombie.prototype.explode = function(player){
   else {
 
     player.takeDamage(base_damage);
-    console.log(player.name, " explodes because" + this.name , "is too powerful.");
+    console.log("ZombieExploder explodes at ", player.name ," but dies.");
     this.isAlive = false;
     this.health=0;
     return base_damage;
