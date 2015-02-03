@@ -1016,7 +1016,42 @@ randomizer = Math.floor((Math.random() * 4) + 2);
  }
 }
 
+Zombie.prototype.takeDamage = function(damage){
 
+  this.health-=damage;
+
+  if(this.health<=0){
+
+    this.isAlive = false;
+    this.health = 0;
+    console.log("zombie dead");
+    return true;
+
+  }
+  
+
+};
+
+Player.prototype.attack = function(zombie){
+
+  var base_damage = calculateAttackDamage(this);
+
+
+  if(this.equippedWith()){
+   
+    console.log('Player attackes with ' + this.equipped.name);
+    zombie.takeDamage(base_damage + this.equipped.damage);
+    return  base_damage + this.equipped.damage;
+  }
+  else {
+   
+    console.log("Player attacks with no weapon");
+    zombie.takeDamage(base_damage);
+    return base_damage;
+  }
+
+  
+};
 /**
  * Sample run.
  * Feel free to edit this and check your game logic.
