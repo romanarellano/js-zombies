@@ -125,6 +125,7 @@ Weapon.prototype = Object.create(Item.prototype,{ contructor : { value:Item}});
 
  }
 
+
  
  
 /**
@@ -159,8 +160,23 @@ Weapon.prototype = Object.create(Item.prototype,{ contructor : { value:Item}});
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+Player.prototype.takeItem = function(item){
 
-/**
+  
+
+  if(this.getPack().length < 3){
+
+    console.log(this.name, item , "is a success!");
+    this.getPack().push(item);
+    return true;
+    
+  }
+  else {
+    console.log("failure to store: pack is full");
+    return false;
+
+}
+};/**
  * Player Class Method => discardItem(item)
  * -----------------------------
  * Player discards an item from their pack.
