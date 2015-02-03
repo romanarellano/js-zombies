@@ -1073,10 +1073,48 @@ Player.prototype.takeDamage = function(damage){
 Zombie.prototype.attack = function(player){
 
   
-  var base_attack =  calculateAttackDamage(this);
-  player.takeDamage(base_attack);
+  var base_damage =  calculateAttackDamage(this);
+  player.takeDamage(base_damage);
   console.log("zombie attacks", player.name);
-  return base_attack;
+  return base_damage;
+
+};
+
+FastZombie.prototype.charge= function(player){
+
+  var base_damage = calculateAttackDamage(this);
+
+  if(this.speed > player.speed){
+
+      player.takeDamage(base_damage + Math.floor(base_damage/2));
+      console.log(this.name + "charges and gives more damage", player.name);
+      return base_damage + Math.floor(base_damage/2);
+  }
+  else {
+      player.takeDamage(base_damage);
+      console.log(this.name + "charges" , player.name);
+      return base_damage;
+  }
+
+};
+
+StrongZombie.prototype.crush = function(player){
+
+  var base_damage = calculateAttackDamage(this);
+
+  if(this.strength > player.strength){
+
+    player.takeDamage(base_damage+ Math.floor(0.80 * base_damage));
+    console.log("Powerful Strong zombie crushes with extra damage " + player.name);
+    return base_damage+ Math.floor(0.80 * base_damage);
+  }
+
+  else {
+
+    player.takeDamage(base_damage);
+    console.log(this.name + " crushes " + player.name);
+    return base_damage;
+  }
 
 };
 /**
