@@ -141,7 +141,17 @@ Weapon.prototype = Object.create(Item.prototype,{ contructor : { value:Item}});
  * @name checkPack
  */
 
+Player.prototype.checkPack = function(){
 
+  var list =this.getPack().reduce(function(curr,next){
+
+      return curr + next;
+
+  },"");
+
+  console.log(list);
+
+};
 /**
  * Player Class Method => takeItem(item)
  * -----------------------------
@@ -201,6 +211,22 @@ Player.prototype.takeItem = function(item){
  * @param {Item/Weapon/Food} item   The item to discard.
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
+Player.prototype.discardItem = function(item){
+
+
+  if(this.getPack().indexOf(item) !== -1){
+
+      this.getPack().splice(this.getPack().indexOf(item),1);
+      console.log("Player discards" +item.name);
+      return true;
+  }
+  else {
+    console.log("Failure: unsuccessful" + item.name);
+    return false;
+  }
+
+};
+
 
 
 /**
@@ -222,7 +248,43 @@ Player.prototype.takeItem = function(item){
  * @name equip
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
+Player.prototype.equip =  function(itemToEquip){
 
+ 
+    if (this.getPack().indexOf(itemToEquip) >=0 && itemToEquip instanceof Weapon && this.equipped == false){
+
+
+      this.discardItem(itemToEquip);
+
+
+      
+      this.equipped = itemToEquip;
+    
+
+  }
+  
+
+   else if(this.getPack().indexOf(itemToEquip) >=0 && itemToEquip instanceof Weapon){
+
+      this.takeItem(this.equipped);
+      this.discardItem(itemToEquip);
+      this.equipped = itemToEquip;
+    }
+
+    else {
+
+      return false;
+    }
+
+
+    
+    
+    
+  
+
+   
+
+};
 
 /**
  * Player Class Method => eat(itemToEat)
