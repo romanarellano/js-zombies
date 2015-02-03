@@ -245,6 +245,7 @@
 /**
  * FastZombie Extends Zombie Class
  * -----------------------------
+<<<<<<< HEAD
  */
 
 
@@ -301,10 +302,22 @@
  * Creates an exploding zombie.
  *
  * The ExplodingZombie class constructor will call 
+=======
+ */
+
+
+
+/**
+ * Class => StrongZombie(health, strength, speed)
+ * -----------------------------
+ * Creates a strong zombie.
+ *
+ * The StrongZombie class constructor will call 
+>>>>>>> zombie_origin/master
  *   the super class (Zombie) constructor
  *   while passing in the 3 Zombie constructor params
  *
- * @name ExplodingZombie
+ * @name StrongZombie
  * @param {number} health           The zombie's health.
  * @param {number} strength         The zombie's strength.
  * @param {number} speed            The zombie's speed.
@@ -312,6 +325,7 @@
 
 
 /**
+<<<<<<< HEAD
  * ExplodingZombie Extends Zombie Class
  * -----------------------------
  */
@@ -395,8 +409,12 @@ function Weapon(name,damage){
 Weapon.prototype = Object.create(Item.prototype,{ contructor : { value:Item}});
 /**
  * Weapon Extends Item Class
+=======
+ * StrongZombie Extends Zombie Class
+>>>>>>> zombie_origin/master
  * -----------------------------
  */
+
 
 
 
@@ -505,10 +523,12 @@ Player.prototype.checkPack = function(){
 
   },"");
 
+
   console.log("pack contents:",list);
 
 };
 /**
+<<<<<<< HEAD
  * Player Class Method => takeItem(item)
  * -----------------------------
  * Player takes an item from the world and places it into their pack.
@@ -524,9 +544,24 @@ Player.prototype.checkPack = function(){
  * @name takeItem
  * @param {Item/Weapon/Food} item   The item to take.
  * @return {boolean} true/false     Whether player was able to store item in pack.
+=======
+ * Class => RangedZombie(health, strength, speed)
+ * -----------------------------
+ * Creates a ranged zombie.
+ *
+ * The RangedZombie class constructor will call 
+ *   the super class (Zombie) constructor
+ *   while passing in the 3 Zombie constructor params
+ *
+ * @name RangedZombie
+ * @param {number} health           The zombie's health.
+ * @param {number} strength         The zombie's strength.
+ * @param {number} speed            The zombie's speed.
+>>>>>>> zombie_origin/master
  */
 
 Player.prototype.takeItem = function(item){
+
 
   
 
@@ -566,6 +601,11 @@ Player.prototype.takeItem = function(item){
  * @name discardItem
  * @param {Item/Weapon/Food} item   The item to discard.
  * @return {boolean} true/false     Whether player was able to remove item from pack.
+=======
+/**
+ * StrongZombie Extends Zombie Class
+ * -----------------------------
+>>>>>>> zombie_origin/master
  */
 Player.prototype.discardItem = function(item){
 
@@ -582,6 +622,7 @@ Player.prototype.discardItem = function(item){
   }
 
 };
+
 
 
 
@@ -687,6 +728,22 @@ Player.prototype.eat = function(itemToEat){
  *
  * @name useItem
  * @param {Item/Weapon/Food} item   The item to use.
+=======
+
+/**
+ * Class => ExplodingZombie(health, strength, speed)
+ * -----------------------------
+ * Creates an exploding zombie.
+ *
+ * The ExplodingZombie class constructor will call 
+ *   the super class (Zombie) constructor
+ *   while passing in the 3 Zombie constructor params
+ *
+ * @name ExplodingZombie
+ * @param {number} health           The zombie's health.
+ * @param {number} strength         The zombie's strength.
+ * @param {number} speed            The zombie's speed.
+>>>>>>> zombie_origin/master
  */
   Player.prototype.useItem = function(item){
 
@@ -709,6 +766,7 @@ Player.prototype.eat = function(itemToEat){
 
 
 /**
+<<<<<<< HEAD
  * Player Class Method => equippedWith()
  * -----------------------------
  * Player checks their equipment.
@@ -787,8 +845,12 @@ function FastZombie(health,strength,speed){
 FastZombie.prototype = Object.create(Zombie.prototype,{contructor : { value : Zombie}});
 /**
  * FastZombie Extends Zombie Class
+=======
+ * ExplodingZombie Extends Zombie Class
+>>>>>>> zombie_origin/master
  * -----------------------------
  */
+
 
 
 
@@ -865,6 +927,7 @@ RangedZombie.prototype = Object.create(Zombie.prototype,{contructor : { value : 
  * @param {number} speed            The zombie's speed.
  */
 function ExplodingZombie(health,strength,speed){
+
 
 
     Zombie.call(this,health,strength,speed);
@@ -1089,6 +1152,7 @@ function runGame() {
   var spitter = new RangedZombie(150, 20, 20);
   var boomer = new ExplodingZombie(50, 15, 10);
 
+
   var shovel = new Weapon("shovel", 15);
   var sandwich = new Food("sandwich", 30);
   var chainsaw = new Weapon("chainsaw", 25);
@@ -1107,15 +1171,30 @@ function runGame() {
   player.equippedWith();
   player.checkPack();
 
+  
+
+  player.equippedWith();
+  player.useItem(chainsaw);
+  player.equippedWith();
+  player.checkPack();
+
   player.useItem(shovel);
   player.equippedWith();
   player.checkPack();
+
 
   player.health = 487;
   console.log("Before health: " + player.health);
   player.useItem(sandwich);
   console.log("After health: " + player.health);
   player.checkPack();
+
+  // player.health = 487;
+  // console.log("Before health: " + player.health);
+  // player.useItem(sandwich);
+  // console.log("After health: " + player.health);
+  // player.checkPack();
+
 }
 
 
