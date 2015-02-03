@@ -59,7 +59,16 @@ Weapon.prototype = Object.create(Item.prototype,{ contructor : { value:Item}});
  * @property {number} energy
  */
 
+ function Food(name,energy){
 
+ 
+  this.energy = energy;
+
+  Item.call(this,name);
+
+ }
+
+ Food.prototype = Object.create(Item.prototype,{constructor : { value : Item }});
 /**
  * Food Extends Item Class
  * -----------------------------
@@ -89,8 +98,37 @@ Weapon.prototype = Object.create(Item.prototype,{ contructor : { value:Item}});
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+ function Player(name,health,strength,speed){
 
+  var pack = [];
+  this.getPack = function(){
+
+    return pack;
+  };
+  
+
+  var maxHealth = health;
+
+  this.getMaxHealth = function(){
+
+    return maxHealth;
+  };
+
+  this.name = name;
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+  this.isAlive = true;
+  this.equipped = false;
+
+
+
+ }
+
+ 
+ 
 /**
+
  * Player Class Method => checkPack()
  * -----------------------------
  * Player checks the contents of their pack.
