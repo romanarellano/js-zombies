@@ -339,9 +339,14 @@ Player.prototype.eat = function(itemToEat){
       this.equip(item);
     }
 
-    if(item instanceof Food){
+    else if(item instanceof Food){
 
       this.eat(item);
+    }
+
+    else {
+
+      return false;
     }
 
   };
@@ -360,7 +365,20 @@ Player.prototype.eat = function(itemToEat){
  * @name equippedWith
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
+Player.prototype.equippedWith = function(){
 
+  if(this.equipped === false){
+    console.log(this.name + "Not equip with this.");
+    return false;
+  }
+
+  else {
+
+    console.log(this.name + " is equipped with " + this.equipped.name);
+    return this.equipped.name;
+  }
+
+};
 
 /**
  * Class => Zombie(health, strength, speed)
