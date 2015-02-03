@@ -1052,6 +1052,33 @@ Player.prototype.attack = function(zombie){
 
   
 };
+
+Player.prototype.takeDamage = function(damage){
+
+  this.health-=damage;
+
+  if(this.health<=0){
+
+    this.isAlive = false;
+    this.health = 0;
+    console.log("Game over");
+    return true;
+
+  }
+
+  console.log("Took a hit");
+
+};
+
+Zombie.prototype.attack = function(player){
+
+  
+  var base_attack =  calculateAttackDamage(this);
+  player.takeDamage(base_attack);
+  console.log("zombie attacks", player.name);
+  return base_attack;
+
+};
 /**
  * Sample run.
  * Feel free to edit this and check your game logic.
