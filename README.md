@@ -47,10 +47,9 @@ Weapon.prototype = Object.create(Item.prototype, {
 });
 ```
 
----
+----
 
-Item(name)
------------------------------
+## Item(name)
 *Creates an item.*
 
 **Parameters**  
@@ -59,9 +58,9 @@ Item(name)
 **Public Properties**  
 `name`: string
 
+----
 
-Weapon(name, damage)
------------------------------
+## Weapon(name, damage)
 *Creates a weapon item.*  
 *Weapon items can be equipped for use in battle.*
 
@@ -79,9 +78,9 @@ while passing in the 1 `Item` constructor param
 #### Weapon Extends Item Class
 The Weapon class will extend the Item class prototype
 
+----
 
-Food(name, energy)
------------------------------
+## Food(name, energy)
 *Creates a food item.*  
 *Food items give energy, restoring health to the player.*
 
@@ -99,11 +98,12 @@ while passing in the 1 Item constructor param
 #### Food Extends Item Class
 The Food class will extend the Item class prototype
 
+----
 
-Player(name, health, strength, speed)
------------------------------
+## Player(name, health, strength, speed)
 *Creates a player in a zombie-infested world.*
 
+### Player Constructor method
 **Parameters**  
 `name`: string, The player's name.  
 `health`: number, The player's health.  
@@ -120,22 +120,34 @@ Player(name, health, strength, speed)
 `strength`: number  
 `speed`: number  
 `isAlive`: boolean, Default value should be `true`.  
-`equipped`: Weapon/boolean, Default value should be `false`.  
-`getPack`: method, Returns private variable `pack`.  
-`getMaxHealth`: method, Returns private variable `maxHealth`.
+`equipped`: Weapon/boolean, Default value should be `false`.    
 
+## Player.Methods
 
-checkPack()
------------------------------
+### getPack()
+*Player accesses his pack*
+
+Returns private variable `pack` in `Array` form.
+
+---
+
+### getMaxHealth()
+*How Sick are you?*
+
+Returns private variable `maxHealth`.
+
+----
+
+### checkPack()
 *Player checks the contents of their pack.*  
 
 Nicely format and print the items in the player's pack.  
 To access the pack, be sure to use Player's `getPack` method.  
 You should be able to invoke this function on a Player instance.
 
+----
 
-takeItem(item)
------------------------------
+### takeItem(item)
 *Player takes an item from the world and places it into their pack.*
 
 Player's pack can only hold a maximum of 3 items, so if they try to add more than that, return false.  
@@ -149,9 +161,9 @@ You should be able to invoke this function on a Player instance.
 
 **Returns**: boolean, Whether player was able to store item in pack.
 
+----
 
-discardItem(item)
------------------------------
+### discardItem(item)
 *Player discards an item from their pack.*
 
 Use Array's `indexOf` method to check if the pack contains the item.  
@@ -173,9 +185,9 @@ You should be able to invoke this function on a Player instance.
 
 **Returns**: boolean, Whether player was able to remove item from pack.
 
+----
 
-equip(itemToEquip)
------------------------------
+### equip(itemToEquip)
 *Player equips a weapon item.*
 
 Player can only equip Weapon instances.  
@@ -189,9 +201,9 @@ You should be able to invoke this function on a Player instance.
 **Parameters**  
 `itemToEquip`: Weapon, The weapon item to equip.
 
+----
 
-eat(itemToEat)
------------------------------
+### eat(itemToEat)
 *Player eats a food item, restoring their health.*
 
 Player can only eat Food instances.  
@@ -206,9 +218,9 @@ You should be able to invoke this function on a Player instance.
 **Parameters**  
 `itemToEat`: Food, The food item to eat.
 
+----
 
-useItem(item)
------------------------------
+### useItem(item)
 *Player uses an item from the pack.*
 
 If the item is a weapon, the player should equip the item.  
@@ -218,9 +230,9 @@ You should be able to invoke this function on a Player instance.
 **Parameters**  
 `item`: Item/Weapon/Food, The item to use.
 
+----
 
-equippedWith()
------------------------------
+### equippedWith()
 *Player checks their equipment.*
 
 Prints the player's name and equipped weapon's name.  
@@ -230,9 +242,10 @@ You should be able to invoke this function on a Player instance.
 
 **Returns**: weapon name or `false`: string/boolean, Weapon name or `false` if nothing is equipped.
 
+----
 
-Zombie(health, strength, speed)
------------------------------
+
+## Zombie (health, strength, speed)
 *Creates a normal zombie.*
 
 **Parameters**  
@@ -249,9 +262,9 @@ Zombie(health, strength, speed)
 `speed`: number  
 `isAlive`: boolean, Default value should be `true`.
 
+----
 
-FastZombie(health, strength, speed)
------------------------------
+## FastZombie(health, strength, speed)
 *Creates a fast zombie.*
 
 Use the `call` method on the Zombie constructor.  
@@ -265,10 +278,9 @@ Set FastZombie's prototype to a new instance of Zombie.
 #### FastZombie Extends Zombie Class
 The FastZombie class will extend the Zombie class prototype
 
+----
 
-
-StrongZombie(health, strength, speed)
------------------------------
+## StrongZombie(health, strength, speed)
 *Creates a strong zombie.*
 
 Use the `call` method on the Zombie constructor.  
@@ -284,8 +296,9 @@ The StrongZombie class will extend the Zombie class prototype
 
 
 
-RangedZombie(health, strength, speed)
------------------------------
+----
+
+## RangedZombie(health, strength, speed)
 *Creates a ranged zombie.*
 
 Use the `call` method on the Zombie constructor.  
@@ -301,8 +314,9 @@ The RangedZombie class will extend the Zombie class prototype
 
 
 
-ExplodingZombie(health, strength, speed)
------------------------------
+----
+
+## ExplodingZombie(health, strength, speed)
 *Creates an exploding zombie.*
 
 Use the `call` method on the Zombie constructor.  
@@ -315,4 +329,3 @@ Set ExplodingZombie's prototype to a new instance of Zombie.
 
 #### ExplodingZombie Extends Zombie Class
 The ExplodingZombie class will extend the Zombie class prototype
-
